@@ -1,0 +1,40 @@
+import React, { useState } from 'react';
+
+function DataLoader() {
+    const [ data, setData ] = useState([]);
+    const [ loading, setLoading ] = useState(false);
+
+    const fetchData = () => {
+        setLoading(true);
+
+        setTimeout( () => {
+            const newData = ["Item 1", "Item 2", "Item 3"];
+            setData(newData);
+            setLoading(false);
+        }, 2000);
+    };
+
+    return (
+        <div>
+            <h1>Mi Página con React y Ajax</h1>
+            <button onClick={fetchData} disabled={loading}>
+                {loading ? 'Cargando...' : 'Cargar Datos'}
+            </button>
+            <div>
+                {loading ? (
+                    <p>Cargando datos...</p>
+                ): data.length > 0 ? (
+                    <ul>
+                        {data.map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No hay datos disponibles.</p>
+                )}
+            </div>
+        </div>
+    );
+}
+
+export default DataLoader;

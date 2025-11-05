@@ -1,0 +1,94 @@
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.pokemon-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.pokemon-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pokemon-card:hover::before {
+  opacity: 1;
+}
+
+/* Animación para las tarjetas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pokemon-card {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Estilos para la barra de búsqueda */
+.MuiTextField-root .MuiOutlinedInput-root {
+  border-radius: 25px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pokemon-card {
+    margin-bottom: 16px;
+  }
+}
